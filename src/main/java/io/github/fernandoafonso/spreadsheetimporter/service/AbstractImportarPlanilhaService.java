@@ -17,6 +17,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 import io.github.fernandoafonso.spreadsheetimporter.core.GenericPlanilhaProcessor;
 import io.github.fernandoafonso.spreadsheetimporter.core.PlanilhaImportConfigManager;
+import io.github.fernandoafonso.spreadsheetimporter.core.PlanilhaProcessor;
 import io.github.fernandoafonso.spreadsheetimporter.model.InterfacePlanilhaModel;
 import io.github.fernandoafonso.spreadsheetimporter.model.PlanilhaModel;
 import io.github.fernandoafonso.spreadsheetimporter.model.TipoPlanilhaImportacaoEnum;
@@ -153,7 +154,7 @@ public abstract class AbstractImportarPlanilhaService<T> {
 
       try (Workbook workbook = generateWorkbook()) {
         InterfacePlanilhaModel<T> modelConfig = getModelConfig(tipo);
-        GenericPlanilhaProcessor<T> processor = new GenericPlanilhaProcessor<>(modelConfig);
+        PlanilhaProcessor<T> processor = getModelProcessor(modelConfig);
         resultados.put(tipo,
                        processor.processar(workbook, getPlanilhaAtual()));
       } catch (Exception e) {
@@ -163,6 +164,11 @@ public abstract class AbstractImportarPlanilhaService<T> {
 
     return resultados;
   }
+
+  /**
+   * @param modelo de configuração
+   */
+  protected abstract GenericPlanilhaProcessor<T> getModelProcessor(InterfacePlanilhaModel<T> modelConfig);
 
   /**
    * @param tipo de planilha
