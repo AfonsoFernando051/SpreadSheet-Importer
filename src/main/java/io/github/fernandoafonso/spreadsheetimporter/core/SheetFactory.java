@@ -74,7 +74,7 @@ public class SheetFactory {
         return sheetValor;
       } catch (NumberFormatException e) {
         SheetString sheetString = new SheetString();
-        sheetString.setValor(cellValue);
+        sheetString.setValue(cellValue);
         sheetString.setNumeroLinha(numeroLinha);
         sheetString.setColuna(getColunaLetra(cell.getColumnIndex()));
         sheetString.setTituloColuna(titulo);

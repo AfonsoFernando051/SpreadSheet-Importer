@@ -6,22 +6,8 @@ package io.github.fernandoafonso.spreadsheetimporter.model;
 public enum TipoPlanilhaImportacaoEnum {
 
   /**
-   * Planilhas de liberações
+   * Planilhas Genérica
    */
-  LIBERACAO,
+  GENERICA,
 
-  /**
-   * Planilhas de encargos
-   */
-  ENCARGOS,
-
-  /**
-   * Planilhas de eventos
-   */
-  EVENTOS,
-
-  /**
-   * Planilhas de Cesta De Índices
-   */
-  CESTA_INDICES;
 }
